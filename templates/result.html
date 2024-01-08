@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120vh;
+            background-color: #F0F0F0;
+            position: relative;
+        }
+        .back-ground-image {
+            position: absolute;
+            top: 5%;
+            left: 0;
+            transition: left 0.5s ease-in-out;
+        }
+        .image-container {
+            position: absolute;
+            top: 9%;
+            left: 1%;
+            max-width: 40%;
+            max-height: 40%;
+            overflow: hidden;
+            transition: transform 1s ease;
+        }
+
+        #flag1 {
+            position: absolute;
+            max-width: 3000px;
+            display: flex;
+            justify-content: space-between;
+            top: 20%;
+            left: 70%;
+            transform: translate(-120%, -30%);
+            width: 23%;
+            height: 25%;
+            transition: left 0.5s ease-in-out;
+        }
+        #modalImage{
+            display:inline-block;
+            padding:20px 30px;
+            background:#fff;
+            width:500px;
+            vertical-align:middle;
+            font-size:15px;
+        }
+
+
+        #flag2 {
+            position: absolute;
+            max-width: 3000px;
+            display: flex;
+            justify-content: space-between;
+            top: 20%;
+            left: 70%;
+            transform: translate(-10%, -30%);
+            width: 23%;
+            height: 25%;
+            transition: left 0.5s ease-in-out;
+        }
+
+
+
+
+        .modal {
+        position : absolute;
+        top: 60%;
+        left : 50%
+        }
+
+    </style>
+</head>
+<body>
+    <div class="back-ground-image" id="backgroundImage">
+        <img src="{{ url_for('static', filename='Rectangle_2.png') }}" alt="BG-Image">
+    </div>
+    <div class="image-container" id="imageContainer">
+        <img src="{{ url_for('static', filename='JourneyFLAG.png') }}"  id="movingImage">
+        <img src="{{ url_for('static', filename='with.png') }}" class="overlay-image">
+    </div>
+    <div id="result-container">
+        <img src="{{ origin_image }}" alt="Predicted image" id="flag1">
+        <img src="{{ image }}" alt="Predicted image" id="flag2">
+        {% set unique_labels = labels | unique %}
+        <ul>
+            {% set unique_labels = labels | unique %}
+            <li>
+                {% for label in unique_labels %}
+                    <button onclick="showImage('{{ label }}')">{{ label }}</button>
+                    <a href="#pop_info_{{ label }}" class="btn_open"></a>
+                {% endfor %}
+            </li>
+        </ul>
+
+    </div>
+    {% for label in unique_labels %}
+        <div id="pop_info_{{ label }}" class="pop_wrap" style="display:none;">
+            <div class="pop_inner">
+                <img id="pop_image" src="/static/{{ label }}.jpg" alt="open_image">
+                <p class="dsc">팝업 안내문구 - {{ label }}에 대한 정보를 여기에 추가하세요.</p>
+                <button type="button" class="btn_close">닫기</button>
+            </div>
+        </div>
+    {% endfor %}
+    <div id="imageModal" class="modal">
+        <button class="close" onclick="closeImage()">닫기</button>
+        <img src="" id="modalImage" alt="modalImage">
+    </div>
+</body>
+<script>
+
+    function showImage(label) {
+    var modal = document.getElementById('imageModal');
+    var modalImage = document.getElementById('modalImage');
+
+    modalImage.src = '/static/' + label + '.jpg';
+
+    modal.style.display = 'block';
+
+    }
+    function closeImage() {
+    var modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+    }
+
+
+</script>
+
+</html>
+

@@ -1,0 +1,223 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120vh;
+            background-color: #F0F0F0;
+            position: relative;
+            overflow: hidden;
+        }
+        .back-ground-image {
+            position: absolute;
+            top: 5%;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            transition: left 0.5s ease-in-out;
+        }
+        .image-container {
+            position: absolute;
+            top: 25%;
+            left: 5%;
+            max-width: 40%;
+            max-height: 40%;
+            overflow: hidden;
+            transition: transform 1s ease;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            cursor: grab;
+        }
+        .overlay-image {
+            position: absolute;
+            top: 50%;
+            left: 57%;
+            transform: translate(-140%, 10%);
+            width: 40%;
+            height: auto;
+        }
+        #flag1 {
+            position: absolute;
+            max-width: 500px;
+            display: flex;
+            justify-content: space-between;
+            top: 5%;
+            left: 30%;
+            transform: translate(-140%, 10%);
+            width: 20%;
+            height: auto;
+            transition: left 0.5s ease-in-out;
+        }
+        #flag2 {
+            position: absolute;
+            max-width: 500px;
+            display: flex;
+            justify-content: space-between;
+            top: 5%;
+            left: 30%;
+            transform: translate(-140%, 10%);
+            width: 25%;
+            height: auto;
+            transition: left 0.5s ease-in-out;
+        }
+        #openFileBtn{
+            position: absolute;
+            top: 31%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            padding: 10px 41px;
+            background-color: #A7C7DE;
+            color: rgb(53, 53, 53);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Arial', Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        #activateBtn{
+            position: absolute;
+            top: 35%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            padding: 10px 45px;
+            background-color: #A7C7DE;
+            color: rgb(53, 53, 53);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Arial', Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        #backBtn {
+            position: absolute;
+            top: 45%;
+            left: 65%;
+            transform: translate(-50%, -50%);
+            padding: 10px 75px;
+            background-color: #A7C7DE;
+            color: rgb(53, 53, 53);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Arial', Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        #openFileBtn:hover,
+        #activateBtn:hover,
+        #backBtn:hover {
+            background-color: #D5DE93;
+        }
+        .container button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="pred_image" id="imagePred">
+        <img src="6a3e35bab5f04a63e63499c3a43077a6.jpg" id="flag1">
+        <img src="ba0c0d20dad1303977b671831c5bb5ed.jpg" id="flag2">
+    </div>
+    <div class="back-ground-image" id="backgroundImage">
+        <img src="Rectangle 2.png" alt="BG-Image">
+    </div>
+    <div class="image-container" id="imageContainer">
+        <img src="JourneyFLAG.png"  id="movingImage">
+        <img src="with.png" class="overlay-image">
+    </div>
+    <div class="container">
+        <button id="openFileBtn" onclick="openFilePopup()">OpenFile</button>
+        <button id="activateBtn" onclick="moveBackgroundImage()">Activate</button>
+        <button id="backBtn" style="display:none;">Home</button>
+    </div>
+    <script>
+        function openFilePopup() {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+            fileInput.addEventListener('change', handleFileUpload);
+            fileInput.click();
+        }
+        function handleFileUpload(event) {
+            const fileInput = event.target;
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const image = new Image();
+                    image.src = e.target.result;
+                    document.body.appendChild(image);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        function moveBackgroundImage() {
+            const backgroundImage = document.getElementById('backgroundImage');
+            const flag1 = document.getElementById('flag1');
+            const flag2 = document.getElementById('flag2');
+            const activateBtn = document.getElementById('activateBtn');
+            // 배경 이미지 왼쪽으로 이동
+            backgroundImage.style.left = '-70%';
+            imageContainer.style.top = '0%';
+            imageContainer.style.left = '0%';
+            imageContainer.style.transform = 'scale(0.5)' ;
+            flag1.style.left = '65%';
+            flag2.style.left = '40%';
+            // 버튼들 서서히 사라지기
+            activateBtn.style.opacity = 0;
+            openFileBtn.style.opacity = 0;
+            backBtn.style.opacity = 1;
+            setTimeout(() => {
+                activateBtn.style.display = 'none';
+                openFileBtn.style.display = 'none';
+                backBtn.style.display = 'block';
+                // 새로운 버튼 오른쪽에서 나타나기
+            }, 500);
+        }
+        function goHome() {
+            // Get references to the elements that were modified
+            const backgroundImage = document.getElementById('backgroundImage');
+            const imageContainer = document.getElementById('imageContainer');
+            const flag1 = document.getElementById('flag1');
+            const flag2 = document.getElementById('flag2');
+            const activateBtn = document.getElementById('activateBtn');
+            const openFileBtn = document.getElementById('openFileBtn');
+            const backBtn = document.getElementById('backBtn');
+            // Reset the positions and styles
+            backgroundImage.style.left = '0';
+            imageContainer.style.top = '25%';
+            imageContainer.style.left = '5%';
+            imageContainer.style.transform = 'none';
+            flag1.style.left = '30%';
+            flag2.style.left = '30%';
+            // Reset button styles and show activate button
+            activateBtn.style.display = 'block';
+            activateBtn.style.opacity = 1;
+            openFileBtn.style.display = 'block';
+            openFileBtn.style.opacity = 1;
+            backBtn.style.display = 'none';
+            // Optionally, you can add additional reset logic here if needed.
+            // Remove the click event listener to prevent multiple bindings
+            backBtn.removeEventListener('click', goHome);
+        }
+        // Add an event listener to the "Back" button
+        const backBtn = document.getElementById('backBtn');
+        backBtn.addEventListener('click', goHome);
+    </script>
+</body>
+</html> -->

@@ -1,0 +1,63 @@
+
+This is a debug message.
+This is a debug message.
+This is a debug message.
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+torch.Size([1, 6804])
+This is a debug message.
+This is a debug message.
+torch.Size([6804])
+This is a debug message.
+torch.Size([6804])
+This is a debug message.
+This is a debug message.
+torch.Size([])
+Predicted Country: china, Confidence: tensor([1.6894e-11, 1.3209e-08, 4.0611e-16,  ..., 9.9907e-01, 6.4011e-02, 6.2934e-04])
+This is a debug message.
+torch.Size([])
+This is a debug message.
+torch.Size([])
+Predicted Country: china, Confidence: tensor([3.7155e-09, 5.8984e-14, 4.6083e-21,  ..., 2.0220e-37, 7.8122e-26, 1.9808e-20])
+This is a debug message.
+torch.Size([])
+Predicted Country: china, Confidence: tensor([3.7155e-09, 5.8984e-14, 4.6083e-21,  ..., 2.0220e-37, 7.8122e-26, 1.9808e-20])
+This is a debug message.
+torch.Size([])
